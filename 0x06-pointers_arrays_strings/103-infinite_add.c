@@ -1,4 +1,4 @@
-#include "main.h"
+#include "holberton.h"
 /**
  * infinite_add - adds values of two strings together
  * @n1: first string of integers
