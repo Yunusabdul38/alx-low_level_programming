@@ -1,16 +1,31 @@
-#include "main.h"
 #include <stdio.h>
-/**
- * free_grid - frees a 2d integer grid previously created by alloc_grid
- * @grid: pointer to array of ints
- * @height: no. of raws
- * Return: nothing, frees memory
- **/
-void free_grid(int **grid, int height)
-{
-	int i;
+#include <stdlib.h>
+#include <ctype.h>
 
-	for (i = 0; i < height; i++)
-		free(grid[i]);
-	free(grid);
+/**
+ * main - program that adds positive numbers.
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: Always 0 (success)
+ */
+
+int main(int argc, char **argv)
+{
+	int sum, i, j;
+
+	sum = 0;
+	for (i = 1; i < argc; i++)
+	{
+		for (j = 0; argv[i][j] != '\0'; j++)
+		{
+			if (!isdigit(argv[i][j]))
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
+		sum += atoi(argv[i]);
+	}
+	printf("%d\n", sum);
+	return (0);
 }

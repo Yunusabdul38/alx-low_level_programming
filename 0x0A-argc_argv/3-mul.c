@@ -1,41 +1,26 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
+
 /**
- * *str_concat - main function.
- * @s1: First string.
- * @s2: Second string.
- * Return: The pointer to str.
+ * main - program that multiplies two numbers.
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 1 if are less of 2 arguments otherwise 0
  */
-char *str_concat(char *s1, char *s2)
+
+int main(int argc, char **argv)
 {
-	int size;
+	int mul;
 
-	int size2;
-
-	int i, j;
-
-	char *array;
-
-	if (!s1)
-		s1 = "";
-	if (!s2)
-		s2 = "";
-	for (size = 0; s1[size] != '\0'; size++)
-		;
-	for (size2 = 0; s2[size2] != '\0'; size2++)
-		;
-	array = malloc(((size) + (size2 + 1)) * sizeof(char));
-	if (!array)
+	if (argc != 3)
 	{
-		return (NULL);
+		printf("Error\n");
+		return (1);
 	}
-	for (i = 0; i < size; i++)
+	else
 	{
-		array[i] = s1[i];
+		mul = atoi(argv[1]) * atoi(argv[2]);
+		printf("%d\n", mul);
 	}
-	for (j = 0; j < (size2 + 1); j++)
-	{
-		array[i + j] = s2[j];
-	}
-	return (array);
+	return (0);
 }

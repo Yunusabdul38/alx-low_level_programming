@@ -1,30 +1,22 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
+
 /**
- * *_strdup - returns pointer to newly allocated space with copy of arg
- * @str: string to copy
- * Return: pointer to array or null
- **/
-char *_strdup(char *str)
+ * main - program that prints the number of arguments passed into it.
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: Always 0 (success)
+ */
+
+int main(int argc, char **argv)
 {
-	char *strDup;
+	int num;
 
-	int i, j;
-
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	i++;
-	strDup = malloc(sizeof(*str) * i);
-	if (strDup == NULL)
-		return (NULL);
-	j = 0;
-	while (str[j] != '\0')
+	for (num = 0; num < argc;)
 	{
-		strDup[j] = str[j];
-		j++;
+		num++;
+		(*argv)++;
 	}
-	return (strDup);
+	printf("%i\n", num - 1);
+	return (0);
 }

@@ -1,39 +1,46 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
+
 /**
- * *argstostr - concatenates all arguements to the program
- * @ac: arguement count
- * @av: pointer to arguements
- * Return: pointer to new space in memory or null
- **/
-char *argstostr(int ac, char **av)
+ * main - program that prints the minimum number of coins
+ * to make change for an amount of money
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0 success 1 failure
+ */
+
+int main(int argc, char **argv)
 {
-	char *strDup;
+	int coins, i, amount;
+	int value[5] = {25, 10, 5, 2, 1};
 
-	int i, j, k, size;
+	coins = 0;
+	amount = atoi(argv[argc - 1]);
 
-	if (ac == 0 || av == NULL)
-		return (NULL);
-	size = 0;
-	for (i = 0; i < ac; i++)
+	if (argc != 2)
 	{
-		for (j = 0; av[i][j] != '\0'; j++)
-			size++;
-		size++;
+		printf("Error\n");
+		return (1);
 	}
-	size++;
-	strDup = malloc(sizeof(char) * size);
-	if (strDup == NULL)
-		return (NULL);
-	k = 0;
-	for (i = 0; i < ac; i++)
+	else if (amount <= 0)
 	{
-		for (j = 0; av[i][j] != '\0'; j++)
+		printf("0\n");
+	}
+	else
+	{
+		for (i = 0; i < 5; i++)
 		{
-			strDup[k++] = av[i][j];
+			if (value[i] <= amount)
+			{
+				coins += (amount / value[i]);
+				amount -= (amount / value[i]) * value[i];
+				if (amount == 0)
+				{
+					printf("%d\n", coins);
+					break;
+				}
+			}
 		}
-		strDup[k++] = '\n';
 	}
-	strDup[k] = '\0';
-	return (strDup);
+	return (0);
 }

@@ -1,1 +1,1 @@
-c programin on argc & argv
+ alx -argc &  argv project
